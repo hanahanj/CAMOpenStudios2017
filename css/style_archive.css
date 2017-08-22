@@ -1,0 +1,199 @@
+
+body{
+	overflow-x:hidden;
+}
+
+/*===========Archive Page========*/
+.menuArchive #archive{
+	z-index: -10;
+	position: fixed;
+	width: 101%;
+	height: 17%;
+	margin:-10px;
+	position:relative;
+	top:75px;
+	left:100px;
+	opacity:1;
+}
+
+.archiveContain{
+	position: absolute;
+	width: 100%;
+	top: 17%;
+}
+
+#sitesContain{
+	position: absolute;
+	top: 82%;
+	left: 20%;
+	width: 70%;
+	opacity:0;
+	z-index: -10;
+}
+
+#archiveSitesContain{
+	position: absolute;
+	top: 7%;
+	left: 18%;
+	width: 80%;
+	z-index: -10;
+}
+
+.archiveSitetitle{
+	position:absolute;
+	top:59%;
+	width:300px;
+	text-align: center;
+	margin-top: -12.5%;
+	color:#ffffff;
+	opacity: 0;
+}
+.archiveSitetitle h4{
+	font-family: "Interstate Bd Cond";
+	text-transform: uppercase;
+	font-size: 36px;
+	/*letter-spacing: .05em;*/
+	line-height: .8em;
+	margin:0;
+
+}
+
+.site{
+	display: inline-block;
+	position: relative;
+	width: 23%;
+	height: auto;
+	margin: 10px;
+	float:left;
+}
+
+.sitesGrid{
+	display: inline;
+	position: relative;
+	width: 298px;
+	height: auto;
+	margin: 10px;
+	float:left;
+}
+
+.site img{
+	position:relative;
+	width:100%;
+	height:auto;
+}
+
+.sitesGrid img{
+	position:relative;
+	width:100%;
+	height:auto;
+}
+
+.sitesGrid a:hover{
+	font-style: normal;
+}
+
+@media (max-width: 1280px){
+	#archiveSitesContain{
+		left: 11%;
+	}
+}
+
+@media (max-width: 1192px){
+	#archiveSitesContain{
+		left: 6%;
+		width: 94%;
+	}
+}
+@media (max-width: 1024px){
+	#archiveSitesContain{
+		left: 1.5%;
+		width: 100%;
+	}
+}
+@media (max-width: 953px){
+	#archiveSitesContain{
+		left: 14%;
+	}
+}
+
+@media (max-width: 768px){
+	.archiveContain{
+		top: 12%;
+	}
+	#archiveSitesContain{
+		left: 7%;
+	}
+}
+
+@media (max-width: 650px){
+	#archiveSitesContain{
+		left: 11%;
+	}
+	.archiveSitetitle{
+		width: 460px;
+	}
+	.sitesGrid{
+		width: 460px;
+	}
+}
+
+@media (max-width: 540px){
+	.archiveContain{
+		width: 90%;
+		top: 11%;
+	}
+
+	#archiveSitesContain{
+		left: 8%;
+	}
+
+	.archiveSitetitle{
+		width: 400px;
+	}
+
+	.sitesGrid{
+		width: 400px;
+	}
+}
+
+
+@media (max-width: 414px){
+
+	#archiveSitesContain{
+		left: 5%;
+	}
+	.archiveSitetitle{
+		width: 330px;
+		top: 60%;
+	}
+
+	.sitesGrid{
+		width: 330px;
+	}
+}
+@media (max-width: 375px){
+	#archiveSitesContain{
+		left: 5%;
+	}
+	.archiveSitetitle{
+		width: 298px;
+	}
+	.sitesGrid{
+		width: 298px;
+	}
+}
+
+@media (max-width: 320px){
+	#archiveSitesContain{
+		left: 2%;
+	}
+	.archiveSitetitle{
+		width: 268px;
+	}
+	.archiveContain{
+		top: 10%;
+	}
+	.sitesGrid{
+		width: 268px;
+	}
+}
