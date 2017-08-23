@@ -362,11 +362,11 @@ p{
 }
 
 #infowindow {
-	position: absolute;
-	left: 0;
-	top: 37%;
-	height: 110px;
-	width: 100%;
+	position: fixed;
+	right: 0;
+	top: 0%;
+	height: 100%;
+	width: 20%;
 	overflow: none;
 	z-index: 200;
 
@@ -374,16 +374,33 @@ p{
 
 #bodyContent{
 	position: absolute;
-	top: -49px;
-	text-align: center;
+	/*top: -49px;*/
+	text-align: left;
 	width:100%;
 }
 
+#bodyContent h1{
+	font-size: 75px;
+	font-family: "Interstate Bla Comp";
+	color: black;
+	text-transform: uppercase;
+	opacity:1;
+	text-align: center;
+	
+}
+
+	#bodyContent h2{
+	font-size: 50px;
+	font-family: "Interstate Bla Comp";
+	color: black;
+	opacity:1;
+	text-align: center;
+	
+}
 #bodyContent p{
-	font-size: 150px;
+	font-size: 16px;
 	font-family: "Interstate Bla Comp";
 	color: white;
-	text-transform: uppercase;
 	opacity:1;
 	text-align: center;
 	text-shadow: 1px 1px 5px #444444;
