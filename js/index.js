@@ -2,132 +2,153 @@
 $(document).ready(function(){
 
 
-	jQuery( '#infowindow' ).hide();
+     jQuery( '#infowindow' ).hide();
 
-	function initialize() {
+     function initialize() {
 
-		var styles = [
-		{
-			stylers: [ 
-			{ hue: "#ff0091" },
-			{ saturation: -100 }
-			]
-		},{
-			featureType: "road", 
-			elementType: "geometry",
-			stylers: [
-			{ lightness: 100 },
-			{ visibility: "simplified" }
-			]
-		},
-		{
-			featureType: "water", 
-			elementType: "geometry",
-			stylers: [
-			{ color: "#000000" },
-			// { lightness: 250 },
-			{ visibility: "simplified" }
-			]
-		},
+          var styles = [
+          {
+               stylers: [ 
+               { "color": "#f5f5f5" },
+               { saturation: -100 }
+               ]
+          },{
+               featureType: "road", 
+               elementType: "geometry",
+               stylers: [
+               { color: "#8ee5ee" },
 
-		{
-			featureType: "road",
-			elementType: "labels",
-			stylers: [
-         //Turns off road labels. 
-         { visibility: "off" }
-         ]
-     }
-     ];
+               { visibility: "simplified" }
+               ]
+          },
 
-     var map_options = {
-     	center: new google.maps.LatLng(38.725, -90.2),
-     	mapTypeId: google.maps.MapTypeId.TERRAIN,
-     	zoom: 11,
-     	panControl: false,
-     	zoomControl: true,
-     	scaleControl: true,
-     	streetViewControl: false,
-     	styles: styles,
-     	mapTypeControl: true,
-     	mapTypeControlOptions: {
-     		mapTypeIds: [google.maps.MapTypeId.SATELLITE,google.maps.MapTypeId.TERRAIN],
-     		style: google.maps.MapTypeControlStyle.DEFAULT,
-     		position: google.maps.ControlPosition.TOP_RIGHT
-     	}
-     };
+          { "elementType": "labels",
+          "stylers": [
+          {
+            "visibility": "off"
+       }
+       ]
+  },
 
-     map = new google.maps.Map(document.getElementById("mapCanvas"), map_options);
+  {
+       featureType: "water", 
+       elementType: "geometry",
+       stylers: [
+       { color: "#c9c9c9" },
+               // { lightness: 250 },
+               { visibility: "simplified" }
+               ]
+          },
 
-     map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+          // {
+          //   featureType: "road",
+          //   elementType: "labels",
+          //   stylers: [
+  //             {color: "#99FFFF"} ,
+  //        //Turns off road labels. 
+  //        { visibility: "simplified" }
+  //        ]
+  //    }
+  ];
 
-     var image = {
-     	url: 'images/ABMarker6.png',
-     };
+  var map_options = {
+    center: new google.maps.LatLng(38.625, -90.3),
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    zoom: 13,
+    panControl: false,
+    zoomControl: true,
+    scaleControl: true,
+    streetViewControl: false,
+    styles: styles,
+    mapTypeControl: true,
+    mapTypeControlOptions: {
+        mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.SATELLITE],
+        style: google.maps.MapTypeControlStyle.DEFAULT,
+        position: google.maps.ControlPosition.TOP_RIGHT
+   }
+};
 
-     var markers = [
-     ['Downtown Airport', 38.578027,-90.162731, 'airport.html'],
-     ['Alorton', 38.598275, -90.124939, 'alorton.html'],
-     ['Alton', 38.890194,-90.186743, 'alton.html'],
-     ['American Bottom Baseline', 38.663897,-90.016018, 'baseline.html'],
-     ['Bloody Island', 38.631724,-90.170419, 'bloody.html'],
-     ['Booker T. Washington Cemetery', 38.553772, -90.102634, 'bookerTWashington.html'],
-     ['Olin Brass', 38.888360, -90.113417, 'brass.html'],
-     ['1993 Levee Breach', 38.340653, -90.321088, 'breach.html'],
-     ['Chain of Rocks Bridge', 38.757970,-90.167914, 'bridge.html'],
-     ['Brooklyn',  38.657758, -90.169039, 'brooklyn.html'],
-     ['National Building Arts Foundation', 38.594559,-90.167283, 'buildingArts.html'],
-     ['Cahokia Mounds',  38.660446,-90.062154, 'cahokia.html'],
-     ['Cahokia Village', 38.570218,-90.188493, 'cahokiaVillage.html'],
-     ['Cahokia Canal', 38.666184,-90.069962, 'cahokiaCanal.html'],
-     ['Chain of Rocks Canal', 38.760148, -90.139328, 'canal.html'],
-     ['Central Port',  38.711324, -90.172260, 'americasCentralPort.html'],
-     ['Old Channel of Wood River ',  38.861303, -90.111696, 'channel.html'],
-     ['Chemetco',  38.797708, -90.098816, 'chemetco.html'],
-     ['Chemin du Rois', 38.166305,-90.205443, 'cheminDuRois.html'],
-     ['Clarks Mound', 38.579328,-90.073327, '0pageIsFoundHere.html'],
-     ['Confluence', 38.812718, -90.118006, 'confluence.html'],
-     ['Prairie du Pont Creek', 38.551607, -90.201470, 'creek.html'],
-     ['Dam No. 27', 38.756382,-90.171517, 'dam27.html'],
-     ['Deer Park', 38.846784, -90.082470, 'deerPark.html'],
-     ['Granite City Army Depot', 38.691183, -90.176091, 'depot.html'],
-     ['Cahokia Diversion Canal', 38.804668, -90.067069, 'diversionCanal.html'],
-     ['Camp DuBois', 38.849717, -90.119760, 'duBois.html'],
-     ['Dupo',  38.522706, -90.210495, 'dupo.html'],
-     ['Eagle Cliff',  38.364697, -90.261725, 'eaglecliffCemetery.html'],
-     ['East Carondelet',  38.540949, -90.232768, 'eastCarondelet.html'],
-     ['East St. Louis', 38.626846,-90.159777, 'eastStLouis.html'],
-     ['Emmert Zippel House', 38.722177,-90.103934, 'emmertZippel.html'],
-     ['Modoc Ferry', 38.009568, -90.053401, 'ferry.html'],
-     ['Fort de Chartres', 38.085666,-90.158570, 'fort.html'],
-     ['French Village', 38.593373,-90.067985, 'frenchVillage.html'],
-     ['Fults Hill Prairie', 38.155910,-90.189697, 'fults.html'],
-     ['Gateway Commerce Center', 38.769133, -90.066700, 'gateway.html'],
-     ['Goshen Settlement', 38.741119,-90.001956, 'goshen.html'],
-     ['Grand Marais', 38.582509,-90.084609, 'grandMarais.html'],
-     ['Granite City', 38.701494,-90.148979, 'granite.html'],
-     ['Gateway Grizzlies', 38.565715, -90.135919, 'grizzlies.html'],
-     ['Collinsville',  38.688242, -90.011326, 'collinsville.html'],
-     ['Horseshoe Lake',  38.699222, -90.067540, 'horseshoeLake.html'],
-     ['Hump Yards',  38.591442,-90.144260, 'humpYards.html'],
-     ['Kaskaskia',  37.921475, -89.913523, 'kaskaskia.html'],
-     ['Kerr Island', 38.673537,-90.177783, 'kerr.html'],
-     ['Kidd Lake Wetland', 38.144126, -90.170092, 'kidd.html'],
-     ['Laclede Steel',  38.885131, -90.143912, 'lacledeSteel.html'],
-     ['Milam Landfill', 38.655978, -90.123811, 'milam.html'],
-     ['Lewis & Clark Monument',  38.802470, -90.102143, 'lewisClark.html'],
-     ['Lock No. 27',  38.702655, -90.180801, 'lock27.html'],
-     ['Long Lake', 38.731564,-90.075837, 'longLake.html'],
-     ['Lowland Forests', 38.417596, -90.262183, 'lowlandForests.html'],
-     ['McKinley Bridge + Tri-Cities Roadside Park',  38.668249, -90.174737, 'mcKinley.html'],
-     ['Mel Price Lock and Dam',  38.870621,-90.151639, 'melPrice.html'],
-     ['Miles Davis House',  38.613648,-90.145442, 'miles.html'],
-     ['Mitchell Mound Group', 38.759294,-90.088769, 'mitchell.html'],
-     ['Modoc Rock Shelter', 38.062410,-90.063510, 'modoc.html'],
-     ['Moredock Lake', 38.324877,-90.295534, 'moredock.html'],
-     ['Gateway Motorsports Park', 38.649807, -90.134907, 'motorsport.html'],
-     ['Rock City', 38.302856,-90.304134, 'NARA.html'],
-     ['National City',  38.641784, -90.149812, 'nationalCity.html'],
+map = new google.maps.Map(document.getElementById("mapCanvas"), map_options);
+
+map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+
+var image = {
+    url: 'images/ABMarker6.png',
+};
+
+var pinColor = "F15E53";
+var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+  new google.maps.Size(30, 40),
+  new google.maps.Point(0,0),
+  new google.maps.Point(10, 34));
+var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+  new google.maps.Size(40, 37),
+  new google.maps.Point(0, 0),
+  new google.maps.Point(12, 35));
+
+var markers = [
+['Downtown Airport', 38.578027,-90.162731, 'airport.html'],
+['Alorton', 38.598275, -90.124939, 'alorton.html'],
+['Alton', 38.890194,-90.186743, 'alton.html'],
+['American Bottom Baseline', 38.663897,-90.016018, 'baseline.html'],
+['Bloody Island', 38.631724,-90.170419, 'bloody.html'],
+['Booker T. Washington Cemetery', 38.553772, -90.102634, 'bookerTWashington.html'],
+['Olin Brass', 38.888360, -90.113417, 'brass.html'],
+['1993 Levee Breach', 38.340653, -90.321088, 'breach.html'],
+['Chain of Rocks Bridge', 38.757970,-90.167914, 'bridge.html'],
+['Brooklyn',  38.657758, -90.169039, 'brooklyn.html'],
+['National Building Arts Foundation', 38.594559,-90.167283, 'buildingArts.html'],
+['Cahokia Mounds',  38.660446,-90.062154, 'cahokia.html'],
+['Cahokia Village', 38.570218,-90.188493, 'cahokiaVillage.html'],
+['Cahokia Canal', 38.666184,-90.069962, 'cahokiaCanal.html'],
+['Chain of Rocks Canal', 38.760148, -90.139328, 'canal.html'],
+['Central Port',  38.711324, -90.172260, 'americasCentralPort.html'],
+['Old Channel of Wood River ',  38.861303, -90.111696, 'channel.html'],
+['Chemetco',  38.797708, -90.098816, 'chemetco.html'],
+['Chemin du Rois', 38.166305,-90.205443, 'cheminDuRois.html'],
+['Clarks Mound', 38.579328,-90.073327, '0pageIsFoundHere.html'],
+['Confluence', 38.812718, -90.118006, 'confluence.html'],
+['Prairie du Pont Creek', 38.551607, -90.201470, 'creek.html'],
+['Dam No. 27', 38.756382,-90.171517, 'dam27.html'],
+['Deer Park', 38.846784, -90.082470, 'deerPark.html'],
+['Granite City Army Depot', 38.691183, -90.176091, 'depot.html'],
+['Cahokia Diversion Canal', 38.804668, -90.067069, 'diversionCanal.html'],
+['Camp DuBois', 38.849717, -90.119760, 'duBois.html'],
+['Dupo',  38.522706, -90.210495, 'dupo.html'],
+['Eagle Cliff',  38.364697, -90.261725, 'eaglecliffCemetery.html'],
+['East Carondelet',  38.540949, -90.232768, 'eastCarondelet.html'],
+['East St. Louis', 38.626846,-90.159777, 'eastStLouis.html'],
+['Emmert Zippel House', 38.722177,-90.103934, 'emmertZippel.html'],
+['Modoc Ferry', 38.009568, -90.053401, 'ferry.html'],
+['Fort de Chartres', 38.085666,-90.158570, 'fort.html'],
+['French Village', 38.593373,-90.067985, 'frenchVillage.html'],
+['Fults Hill Prairie', 38.155910,-90.189697, 'fults.html'],
+['Gateway Commerce Center', 38.769133, -90.066700, 'gateway.html'],
+['Goshen Settlement', 38.741119,-90.001956, 'goshen.html'],
+['Grand Marais', 38.582509,-90.084609, 'grandMarais.html'],
+['Granite City', 38.701494,-90.148979, 'granite.html'],
+['Gateway Grizzlies', 38.565715, -90.135919, 'grizzlies.html'],
+['Collinsville',  38.688242, -90.011326, 'collinsville.html'],
+['Horseshoe Lake',  38.699222, -90.067540, 'horseshoeLake.html'],
+['Hump Yards',  38.591442,-90.144260, 'humpYards.html'],
+['Kaskaskia',  37.921475, -89.913523, 'kaskaskia.html'],
+['Kerr Island', 38.673537,-90.177783, 'kerr.html'],
+['Kidd Lake Wetland', 38.144126, -90.170092, 'kidd.html'],
+['Laclede Steel',  38.885131, -90.143912, 'lacledeSteel.html'],
+['Milam Landfill', 38.655978, -90.123811, 'milam.html'],
+['Lewis & Clark Monument',  38.802470, -90.102143, 'lewisClark.html'],
+['Lock No. 27',  38.702655, -90.180801, 'lock27.html'],
+['Long Lake', 38.731564,-90.075837, 'longLake.html'],
+['Lowland Forests', 38.417596, -90.262183, 'lowlandForests.html'],
+['McKinley Bridge + Tri-Cities Roadside Park',  38.668249, -90.174737, 'mcKinley.html'],
+['Mel Price Lock and Dam',  38.870621,-90.151639, 'melPrice.html'],
+['Miles Davis House',  38.613648,-90.145442, 'miles.html'],
+['Mitchell Mound Group', 38.759294,-90.088769, 'mitchell.html'],
+['Modoc Rock Shelter', 38.062410,-90.063510, 'modoc.html'],
+['Moredock Lake', 38.324877,-90.295534, 'moredock.html'],
+['Gateway Motorsports Park', 38.649807, -90.134907, 'motorsport.html'],
+['Rock City', 38.302856,-90.304134, 'NARA.html'],
+['National City',  38.641784, -90.149812, 'nationalCity.html'],
      // ['Old Man River', 38.636745, -90.165637, 'oldManRiver.html'],
      ['Canal Overlook',  38.793738, -90.119215, 'canalOverlook.html'],
      ['Poag', 38.794102,-90.038701, 'poag.html'],
@@ -266,17 +287,17 @@ var content = [
 ];
 
 var clusterStyles = [{
-	url: 'http://oi62.tinypic.com/zjbf9l.jpg',
-	height: 80,
-	width: 150,
-	textSize: 16,
-	backgroundPosition: "-4 0"
+     // url: 'http://oi62.tinypic.com/zjbf9l.jpg',
+     height: 80,
+     width: 150,
+     textSize: 16,
+     backgroundPosition: "-4 0"
 }];
 
 var mcOptions = {
-	gridSize: 30,
-	styles: clusterStyles,
-	maxZoom: 15
+     gridSize: 30,
+     styles: clusterStyles,
+     maxZoom: 15
 };
 
 var bounds = new google.maps.LatLngBounds();
@@ -285,15 +306,16 @@ var gmarkers = [];
 var marker, i;
 
 for (i = 0; i < markers.length; i++) {
-	marker = new google.maps.Marker({
-		position: new google.maps.LatLng(markers[i][1], markers[i][2]),
-		map: map,
-		icon: image,
-		title: [0],
-		url:markers[i][3]
-	     		// zIndex: markers[i][3],
-	     	});
-	bounds.extend(marker.getPosition());
+     marker = new google.maps.Marker({
+          position: new google.maps.LatLng(markers[i][1], markers[i][2]),
+          map: map,
+          icon: pinImage,
+          shadow: pinShadow,
+          title: [0],
+          url:markers[i][3]
+                    // zIndex: markers[i][3],
+               });
+     bounds.extend(marker.getPosition());
 
 
 //Infobox appear and disappear ///////////////////// 
@@ -301,22 +323,22 @@ for (i = 0; i < markers.length; i++) {
 
 
 google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
-	return function () {  
-		jQuery( '#infowindow' ).show();
-		jQuery( '#infowindow' ).empty();
-		jQuery( '#infowindow' ).append( content[i][0] );					
-	}
+     return function () {  
+          jQuery( '#infowindow' ).show();
+          jQuery( '#infowindow' ).empty();
+          jQuery( '#infowindow' ).append( content[i][0] );                      
+     }
 })(marker, i));
 gmarkers.push(marker);
 
 google.maps.event.addListener(marker, 'click', function() {
-	window.location.href = this.url;
+     window.location.href = this.url;
 });
 
 google.maps.event.addListener(marker, 'mouseout', (function (marker, i) {
-	return function () {  
-		jQuery( '#infowindow' ).hide();					
-	}
+     return function () {  
+          jQuery( '#infowindow' ).hide();                        
+     }
 })(marker, i));
 gmarkers.push(marker);
 
@@ -335,144 +357,144 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 
 $('.menuFloatInt').mouseover(function() {
-	$(this).css({"font-style": "italic"});          
+     $(this).css({"font-style": "italic"});          
 });
 
 
 $('.menuFloatInt').mouseleave('click touchstart', function() {
-	$(this).css({"font-style": "normal"});          
+     $(this).css({"font-style": "normal"});          
 });
 
 
 
 $('.menuFloatSites').mouseover(function() {
-	$(this).css({"font-style": "italic"});          
+     $(this).css({"font-style": "italic"});          
 });
 
 
 $('.menuFloatSites').mouseleave('click touchstart', function() {
-	$(this).css({"font-style": "normal"});    
+     $(this).css({"font-style": "normal"});    
 });
 
 $('.menuFloatAbout').mouseover(function() {
-	$(this).css({"font-style": "italic"});           
+     $(this).css({"font-style": "italic"});           
 });
 
 
 $('.menuFloatAbout').mouseleave('click touchstart', function() {
-	$(this).css({"font-style": "normal"});  
+     $(this).css({"font-style": "normal"});  
 });
 
 
 
 $('.menuFloatInt').on('click touchstart', function() { 
-	$('#mapContainer').animate({width: '80%', height: "100%", top: "0%"}, 300); 
-	$('#listItineraries').animate({opacity: '1'}, 800);  
-	$('.about').animate({opacity: '0'}, 300);   
-	$('.logo').animate({opacity: '0'}, 300); 
-	$('#sitesContain').animate({opacity: '0'}, 300);
-	$('.close').animate({opacity: '1'}, 300);
+     $('#mapContainer').animate({width: '80%', height: "100%", top: "0%"}, 300); 
+     $('#listItineraries').animate({opacity: '1'}, 800);  
+     $('.about').animate({opacity: '0'}, 300);   
+     $('.logo').animate({opacity: '0'}, 300); 
+     $('#sitesContain').animate({opacity: '0'}, 300);
+     $('.close').animate({opacity: '1'}, 300);
 
-	$(this).css({"text-decoration":"underline", "font-style": "italic"});
-	$('.menuFloatSites').css({"text-decoration":"none", "font-style": "normal"}); 
-	$('.menuFloatAbout').css({"text-decoration":"none", "font-style": "normal"});   
+     $(this).css({"text-decoration":"underline", "font-style": "italic"});
+     $('.menuFloatSites').css({"text-decoration":"none", "font-style": "normal"}); 
+     $('.menuFloatAbout').css({"text-decoration":"none", "font-style": "normal"});   
 });
 
 $('.menuFloatSites').on('click touchstart', function() {
-	$('#mapContainer').animate({height: '80%', width: "100%", top: '0%'}, 300);  
-	$('#sitesContain').animate({opacity: '1'}, 800);
-	$('.about').animate({opacity: '0'}, 300);   
-	$('.logo').animate({opacity: '0'}, 300); 
-	$('.close').animate({opacity: '1'}, 300);
+     $('#mapContainer').animate({height: '80%', width: "100%", top: '0%'}, 300);  
+     $('#sitesContain').animate({opacity: '1'}, 800);
+     $('.about').animate({opacity: '0'}, 300);   
+     $('.logo').animate({opacity: '0'}, 300); 
+     $('.close').animate({opacity: '1'}, 300);
 
-	$(this).css({"text-decoration":"underline", "font-style": "italic"});
-	$('.menuFloatInt').css({"text-decoration":"none", "font-style": "normal"});
-	$('.menuFloatAbout').css({"text-decoration":"none", "font-style": "normal"});     
+     $(this).css({"text-decoration":"underline", "font-style": "italic"});
+     $('.menuFloatInt').css({"text-decoration":"none", "font-style": "normal"});
+     $('.menuFloatAbout').css({"text-decoration":"none", "font-style": "normal"});     
 });
 
 $('.menuFloatAbout').on('click touchstart', function() {
-	$('#mapContainer').animate({height: '75%', width: "100%", top: '25.5%', }), 300;
-	$('#listItineraries').animate({opacity: '0'}, 300);
-	$('.about').animate({opacity: '1'}, 300);   
-	$('.logo').animate({opacity: '1'}, 300); 
-	$('#sitesContain').animate({opacity: '0'}, 300);
-	$('.close').animate({opacity: '1'}, 300);
+     $('#mapContainer').animate({height: '75%', width: "100%", top: '25.5%', }), 300;
+     $('#listItineraries').animate({opacity: '0'}, 300);
+     $('.about').animate({opacity: '1'}, 300);   
+     $('.logo').animate({opacity: '1'}, 300); 
+     $('#sitesContain').animate({opacity: '0'}, 300);
+     $('.close').animate({opacity: '1'}, 300);
 
-	$(this).css({"text-decoration":"underline", "font-style": "italic"}); 
-	$('.menuFloatInt').css({"text-decoration":"none", "font-style": "normal"}); 
-	$('.menuFloatSites').css({"text-decoration":"none", "font-style": "normal"});
+     $(this).css({"text-decoration":"underline", "font-style": "italic"}); 
+     $('.menuFloatInt').css({"text-decoration":"none", "font-style": "normal"}); 
+     $('.menuFloatSites').css({"text-decoration":"none", "font-style": "normal"});
 
 });
 
 $('.close').on('click touchstart', function() { 
-	$('#mapContainer').animate({top: '0%', left: "0%", height: '100%', width: "100%", }, 300);
-	$(this).animate({opacity: '0'}, 300);  
-	$('#listItineraries').animate({opacity: '0'}, 300);
-	$('.about').animate({opacity: '0'}, 300);   
-	$('.logo').animate({opacity: '0'}, 300); 
-	$('#sitesContain').animate({opacity: '0'}, 300);
-	$('.menuFloatInt').css({"text-decoration":"none", "font-style": "normal"}); 
-	$('.menuFloatSites').css({"text-decoration":"none", "font-style": "normal"});
-	$('.menuFloatAbout').css({"text-decoration":"none", "font-style": "normal"}); 
+     $('#mapContainer').animate({top: '0%', left: "0%", height: '100%', width: "100%", }, 300);
+     $(this).animate({opacity: '0'}, 300);  
+     $('#listItineraries').animate({opacity: '0'}, 300);
+     $('.about').animate({opacity: '0'}, 300);   
+     $('.logo').animate({opacity: '0'}, 300); 
+     $('#sitesContain').animate({opacity: '0'}, 300);
+     $('.menuFloatInt').css({"text-decoration":"none", "font-style": "normal"}); 
+     $('.menuFloatSites').css({"text-decoration":"none", "font-style": "normal"});
+     $('.menuFloatAbout').css({"text-decoration":"none", "font-style": "normal"}); 
 });
 
 
 // $('.splashClose').on('click touchstart', function() {
-// 	$(this).animate({opacity: '0'}, 300);
-// 	$('.splashDescription').animate({opacity: '0'}, 300);
-// 	$('.splashDescription').css({"z-index": '-10'}, 300); 
+//   $(this).animate({opacity: '0'}, 300);
+//   $('.splashDescription').animate({opacity: '0'}, 300);
+//   $('.splashDescription').css({"z-index": '-10'}, 300); 
 // });
 
 //==============splashPage only appear once================
 $(document).on('ready', checkSplash);
 
 function checkSplash(){
-	var visit = sessionStorage.getItem("visit");
-	
-	sessionStorage.setItem("visit", "true");
+     var visit = sessionStorage.getItem("visit");
+     
+     sessionStorage.setItem("visit", "true");
     //once the mouse is clicked the <splashClose>
     $(".splashClose").on('click touchstart', function(){
          //get the variable value from local storage and compare it
          $(this).animate({opacity: '0'}, 300);
          $('.splashDescription').animate({opacity: '0'}, 300);
-         $('.splashDescription').css({"z-index": '-10'}, 300); 	
+         $('.splashDescription').css({"z-index": '-10'}, 300);   
          if(visit === "true") {
-         	sessionStorage.setItem("visit", "false");
-         } 
+          sessionStorage.setItem("visit", "false");
+     } 
 
-     });
+});
     if (visit === "false"){
-    	$('.splashClose').animate({opacity: '0'}, 5);
-    	$('.splashDescription').animate({opacity: '0'}, 5);
-    	$('.splashDescription').css({"z-index": '-10'}, 5); 
-    	sessionStorage.setItem("visit", "false");
-    }
+     $('.splashClose').animate({opacity: '0'}, 5);
+     $('.splashDescription').animate({opacity: '0'}, 5);
+     $('.splashDescription').css({"z-index": '-10'}, 5); 
+     sessionStorage.setItem("visit", "false");
+}
 }
 
 $('.home').click('click touchstart', function() {
-	$('.menu').animate({opacity: '1'}, 120); 
-	$('.menuLinks').animate({opacity: '1'}, 120); 
-	$('.menuLinks').css({"z-index": '-10'}, 120); 
-	$(this).animate({opacity: '0'}, 300);
-	$(this).css({"z-index": '1000'}, 120);
+     $('.menu').animate({opacity: '1'}, 120); 
+     $('.menuLinks').animate({opacity: '1'}, 120); 
+     $('.menuLinks').css({"z-index": '-10'}, 120); 
+     $(this).animate({opacity: '0'}, 300);
+     $(this).css({"z-index": '1000'}, 120);
 
-	$('.homeClose').animate({opacity: '1'}, 300);
-	$('.homeClose').css({"z-index": '2000'}, 120); 
+     $('.homeClose').animate({opacity: '1'}, 300);
+     $('.homeClose').css({"z-index": '2000'}, 120); 
 });
 
 $('.homeClose').click('click touchstart', function() {
-	$('.menu').animate({opacity: '0'}, 120); 
-	$('.menuLinks').animate({opacity: '0'}, 120); 
-	$('.menuLinks').css({"z-index": '-10'}, 120); 
-	$(this).animate({opacity: '0'}, 300);  
-	$(this).css({"z-index": '1000'}, 120);  
-	$('.home').animate({opacity: '1'}, 300);
-	$('.home').css({"z-index": '2000'}, 120); 
+     $('.menu').animate({opacity: '0'}, 120); 
+     $('.menuLinks').animate({opacity: '0'}, 120); 
+     $('.menuLinks').css({"z-index": '-10'}, 120); 
+     $(this).animate({opacity: '0'}, 300);  
+     $(this).css({"z-index": '1000'}, 120);  
+     $('.home').animate({opacity: '1'}, 300);
+     $('.home').css({"z-index": '2000'}, 120); 
 });
 
 // $('.menu').mouseleave('click touchstart', function() {
-// 	$('.menuLinks').animate({opacity: '0'}, 120); 
-// 	$('.home').animate({opacity: '1'}, 120); 
+//   $('.menuLinks').animate({opacity: '0'}, 120); 
+//   $('.home').animate({opacity: '1'}, 120); 
 // });
 
 
