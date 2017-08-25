@@ -2,10 +2,7 @@
 $(document).ready(function(){
 
 
-
-
-
-     jQuery( '#infowindow' ).hide();
+     // jQuery( '#infowindow' ).hide();
 
      function initialize() {
 
