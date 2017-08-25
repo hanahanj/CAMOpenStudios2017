@@ -23,19 +23,25 @@
     }
 
     h1{
+    	font-family:helvetica;
 
     	font-size: 24px;
-    	
+    	text-transform: uppercase;
     	margin:0;
     	display:inline;
 
     }
 
     h2{
-
+font-family:helvetica;
     	font-size: 18px;
     	line-height: .8em;
     	margin-top:5px;
+    	margin-bottom: 1px;
+    }
+
+    h2 a{
+    	color:black;
     }
 
     a{
@@ -53,9 +59,7 @@
     	font-style: normal;
     }
 
-    h2 a{
-    	color:black;
-    }
+    
 
     h3{
     	font-family: "Interstate Bd";
@@ -94,10 +98,13 @@
 
 
     p{
+    	font-family:helvetica;
+    	 font-style: italic;
     	font-size: 16px;
     	color: black;
     	opacity:1;
     	text-align: left;
+    	margin-left: 50px;
     	
     }
 
@@ -125,10 +132,12 @@
 .logo{
 	position:fixed;
 	z-index: 10000;
+	width:25%;
 }
 
 .logo img{
-	width: 25%; height: auto; 
+	width: 100%; 
+	height: auto; 
 	
 	padding-left: 2%;
 }
@@ -153,8 +162,21 @@ div.vertical {
 
 
 .gm-style-iw {
-width: 300px; 
+width: 500px; 
 min-height: 150px;
+}
+
+#content{
+	position:relative;
+	width:300px;
+
+}
+
+#contentIMG{
+	margin-bottom: 54%;
+    margin-right: 5%;
+    width: 25%;
+    position: absolute;
 }
 
 
