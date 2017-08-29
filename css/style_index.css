@@ -25,7 +25,7 @@
     h1{
     	font-family:helvetica;
 
-    	font-size: 24px;
+    	font-size: 32px;
     	text-transform: uppercase;
     	margin:0;
     	display:inline;
@@ -48,11 +48,13 @@ font-family:helvetica;
     	text-decoration: none;
     	font-style: normal;
     	color:#000000;
+    	text-decoration: underline;
     }
 
 
     a:hover{
     	font-style: italic;
+
     }
 
     .sitesGrid a:hover{
@@ -168,7 +170,7 @@ min-height: 150px;
 
 #content{
 	position:relative;
-	width:300px;
+	width:220px;
 
 }
 
